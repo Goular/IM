@@ -1,0 +1,35 @@
+runmode: debug                 # 开发模式, debug, release, test
+addr: 127.0.0.1:8001           # HTTP绑定端口
+name: apiserver              # API Server的名字
+url: http://127.0.0.1:8001   # pingServer函数请求的API服务器的ip:port
+max_ping_count: 10           # pingServer函数try的次数
+jwt_secret: Rtg8BPKNEf2mB4mgvKONGPZZQSaJWNLijxR42qRgq0iBb5
+gormlog: true
+log:
+  writers: file,stdout
+  logger_level: DEBUG
+  logger_file: log/apiserver.log
+  log_format_text: false
+  rollingPolicy: size
+  log_rotate_date: 1
+  log_rotate_size: 1
+  log_backup_count: 7
+tls:
+  addr: 127.0.0.1:8083
+  cert: ./conf/server.crt
+  key: ./conf/server.key
+db:
+  name: db_apiserver
+  addr: 127.0.0.1:3306
+  username: root
+  password: 123456
+docker_db:
+  name: db_apiserver
+  addr: 127.0.0.1:3306
+  username: root
+  password: root
+yunpian_sms:
+  apikey: 17622d7536774f56a130b7d8389093a2
+turingapi:
+  apiKey: 37dd7960f8d04c96bb91b225f6bb0e01
+  userId: 301198
