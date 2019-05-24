@@ -1,7 +1,7 @@
 package user
 
 import (
-	"spoon/entity"
+	"IM/entity"
 )
 
 type CreateRequest struct {
@@ -20,6 +20,6 @@ type ListRequest struct {
 }
 
 type ListResponse struct {
-	TotalCount uint64            `json:"totalCount"`
+	TotalCount uint64             `json:"totalCount"`
 	UserList   []*entity.UserInfo `json:"userList"`
 }

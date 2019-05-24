@@ -1,22 +1,22 @@
 package main
 
 import (
+	"IM/config"
+	_ "IM/handler/wechat" // 添加wechat公众号的初始方法
+	"IM/model"
+	v "IM/pkg/version"
+	"IM/router"
+	"IM/router/middleware"
+	"encoding/json"
 	"errors"
-	"net/http"
-	"time"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/spf13/pflag"
 	"github.com/spf13/viper"
-	v "spoon/pkg/version"
-	"spoon/config"
-	"spoon/model"
-	"spoon/router"
-	"spoon/router/middleware"
-	"fmt"
+	"net/http"
 	"os"
-	"encoding/json"
-	_ "spoon/handler/wechat" // 添加wechat公众号的初始方法
+	"time"
 )
 
 var (

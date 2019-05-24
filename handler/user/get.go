@@ -1,10 +1,10 @@
 package user
 
 import (
-	. "spoon/handler"
+	. "IM/handler"
+	"IM/model"
+	"IM/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"spoon/model"
-	"spoon/pkg/errno"
 )
 
 // @Summary Get an user by the user identifier 通过用户表示获取用户信息

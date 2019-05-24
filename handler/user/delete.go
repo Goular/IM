@@ -1,11 +1,11 @@
 package user
 
 import (
-	"strconv"
-	. "spoon/handler"
+	. "IM/handler"
+	"IM/model"
+	"IM/pkg/errno"
 	"github.com/gin-gonic/gin"
-	"spoon/model"
-	"spoon/pkg/errno"
+	"strconv"
 )
 
 // @Summary Delete an user by the user identifier

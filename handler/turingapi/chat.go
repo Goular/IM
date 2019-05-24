@@ -1,9 +1,9 @@
 package turingapi
 
 import (
+	"IM/handler"
+	"IM/util/turingapi"
 	"github.com/gin-gonic/gin"
-	"spoon/util/turingapi"
-	"spoon/handler"
 )
 
 // 与机器人进行文字聊天

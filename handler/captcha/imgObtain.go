@@ -1,9 +1,9 @@
 package captcha
 
 import (
+	"IM/handler"
 	"github.com/gin-gonic/gin"
 	"github.com/mojocn/base64Captcha"
-	"spoon/handler"
 )
 
 // 生成图片验证码，返回base64的图片字符串

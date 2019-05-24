@@ -1,11 +1,11 @@
 package qrcode
 
 import (
-	"github.com/gin-gonic/gin"
-	"net/http"
-	"io/ioutil"
+	"IM/handler"
 	"encoding/base64"
-	"spoon/handler"
+	"github.com/gin-gonic/gin"
+	"io/ioutil"
+	"net/http"
 )
 
 // 提交POST请求获取二维码

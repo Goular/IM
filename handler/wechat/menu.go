@@ -1,11 +1,11 @@
 package wechat
 
 import (
-	"github.com/gin-gonic/gin"
-	"spoon/util/wechat/menu"
-	"spoon/handler"
+	"IM/handler"
+	"IM/util/wechat/menu"
+	"encoding/json"
 	"errors"
-	"github.com/gin-gonic/gin/json"
+	"github.com/gin-gonic/gin"
 )
 
 // 获取自定义菜单

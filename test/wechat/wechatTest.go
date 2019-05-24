@@ -1,9 +1,9 @@
 package wechat
 
 import (
+	"IM/handler/wechat"
+	_ "IM/handler/wechat"
 	"github.com/gin-gonic/gin"
-	_ "spoon/handler/wechat"
-	"spoon/handler/wechat"
 )
 
 // 微信公众号测试

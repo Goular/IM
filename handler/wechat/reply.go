@@ -1,11 +1,11 @@
 package wechat
 
 import (
+	"IM/util/turingapi"
+	"IM/util/wechat/reply"
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"github.com/silenceper/wechat/message"
-	"spoon/util/wechat/reply"
-	"fmt"
-	"spoon/util/turingapi"
 )
 
 func Reply(c *gin.Context) {

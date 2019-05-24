@@ -1,6 +1,6 @@
 package main
 
-import "spoon/test/easyjson/model"
+import "IM/test/easyjson/model"
 
 func main() {
 	Test()
@@ -19,5 +19,3 @@ func Test() {
 	user2.UnmarshalJSON([]byte(user1))
 	println("name = ", user2.Name)
 }
-
-

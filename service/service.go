@@ -1,11 +1,11 @@
 package service
 
 import (
+	"IM/entity"
+	"IM/model"
+	"IM/util"
 	"fmt"
 	"sync"
-	"spoon/model"
-	"spoon/util"
-	"spoon/entity"
 )
 
 func ListUser(username string, offset, limit int) ([]*entity.UserInfo, uint64, error) {

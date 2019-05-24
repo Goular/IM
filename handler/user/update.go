@@ -3,13 +3,13 @@ package user
 import (
 	"strconv"
 
-	. "spoon/handler"
+	. "IM/handler"
+	"IM/model"
+	"IM/pkg/errno"
+	"IM/util"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	"spoon/model"
-	"spoon/pkg/errno"
-	"spoon/util"
 )
 
 // @Summary Update a user info by the user identifier

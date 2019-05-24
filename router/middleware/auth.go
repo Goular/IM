@@ -1,10 +1,10 @@
 package middleware
 
 import (
+	"IM/handler"
+	"IM/pkg/errno"
+	"IM/pkg/token"
 	"github.com/gin-gonic/gin"
-	"spoon/pkg/token"
-	"spoon/handler"
-	"spoon/pkg/errno"
 )
 
 func AuthMiddleware() gin.HandlerFunc {

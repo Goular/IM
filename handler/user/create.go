@@ -1,13 +1,13 @@
 package user
 
 import (
-	. "spoon/handler"
+	. "IM/handler"
+	"IM/model"
+	"IM/pkg/errno"
+	"IM/util"
 	"github.com/gin-gonic/gin"
 	"github.com/lexkong/log"
 	"github.com/lexkong/log/lager"
-	"spoon/util"
-	"spoon/pkg/errno"
-	"spoon/model"
 )
 
 // @Summary Add new user to the database

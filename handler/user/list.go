@@ -1,10 +1,10 @@
 package user
 
 import (
-	. "spoon/handler"
+	. "IM/handler"
+	"IM/pkg/errno"
+	"IM/service"
 	"github.com/gin-gonic/gin"
-	"spoon/pkg/errno"
-	"spoon/service"
 )
 
 // List list the users in the database.
