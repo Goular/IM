@@ -108,7 +108,7 @@ func Load(g *gin.Engine, mw ...gin.HandlerFunc) *gin.Engine {
 	// IM服务
 	ims := g.Group("/im")
 	{
-		ims.GET("/hello", im.Hello)
+		ims.POST("/login", im.Login)
 	}
 
 	// Casbin权限管理测试 -- 目前是RBAC
