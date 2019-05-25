@@ -1,6 +1,9 @@
 package errno
 
-import "fmt"
+import (
+	"fmt"
+	"gopkg.in/go-playground/validator.v9"
+)
 
 type Errno struct {
 	Code    int
@@ -16,6 +19,13 @@ type Err struct {
 	Code    int
 	Message string
 	Err     error
+}
+
+// 表单校验
+type ErrValidateForm struct {
+	Key   string `json:"key"`   // 表单Field的名称
+	Tag   string `json:"tag"`   // 检验类型的名称
+	Param string `json:"param"` // 检验类型的设置参考值
 }
 
 func New(errno *Errno, err error) *Err {
@@ -36,23 +46,43 @@ func (err *Err) Error() string {
 	return fmt.Sprintf("Err - code: %d, message: %s, error: %s", err.Code, err.Message, err.Err)
 }
 
-func IsErrUserNotFound(err error) bool {
-	code, _ := DecodeErr(err)
-	return code == ErrUserNotFound.Code
-}
+//func IsErrUserNotFound(err error) bool {
+//	code, _ := DecodeErr(err)
+//	return code == ErrUserNotFound.Code
+//}
 
-func DecodeErr(err error) (int, string) {
+// 对Err的结构体数据进行解码
+func DecodeErr(err *Err) (int, string) {
 	if err == nil {
 		return OK.Code, OK.Message
 	}
+	return err.Code, err.Message
+}
 
-	switch typed := err.(type) {
-	case *Err:
-		return typed.Code, typed.Message
-	case *Errno:
-		return typed.Code, typed.Message
-	default:
+// 对ErrNo的结构体数据进行解码
+func DecodeErrNo(err *Errno) (int, string) {
+	if err == nil {
+		return OK.Code, OK.Message
 	}
+	return err.Code, err.Message
+}
 
-	return InternalServerError.Code, err.Error()
+// 对ErrValidateForm的结构体数据进行解码
+func DecodeValidationErrors(errs validator.ValidationErrors) (code int, message string, errValidateForms []*ErrValidateForm) {
+	var (
+		fieldError      validator.FieldError
+		errValidateForm *ErrValidateForm
+	)
+	if errs == nil {
+		return OK.Code, OK.Message, nil
+	}
+	for _, fieldError = range errs {
+		errValidateForm = &ErrValidateForm{
+			Key:   fieldError.Field(),
+			Tag:   fieldError.Tag(),
+			Param: fieldError.Param(),
+		}
+		errValidateForms = append(errValidateForms, errValidateForm)
+	}
+	return ErrUnregularParams.Code, ErrUnregularParams.Message, errValidateForms
 }
