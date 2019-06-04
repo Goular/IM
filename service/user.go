@@ -52,7 +52,10 @@ func (s *UserService) Register(
 }
 
 //登录函数
-func (s *UserService) Login(mobile, plainpwd string) (user model.User, err error) {
+func (s *UserService) Login(
+	mobile, //手机
+	plainpwd string) (user model.User, err error) {
+
 	//首先通过手机号查询用户
 	tmp := model.User{}
 	DbEngin.Where("mobile = ?", mobile).Get(&tmp)
@@ -71,4 +74,14 @@ func (s *UserService) Login(mobile, plainpwd string) (user model.User, err error
 	//返回数据
 	DbEngin.ID(tmp.Id).Cols("token").Update(&tmp)
 	return tmp, nil
+}
+
+//查找某个用户
+func (s *UserService) Find(
+	userId int64) (user model.User) {
+
+	//首先通过手机号查询用户
+	tmp := model.User{}
+	DbEngin.ID(userId).Get(&tmp)
+	return tmp
 }
