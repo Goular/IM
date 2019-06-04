@@ -20,27 +20,37 @@ func UserLogin(writer http.ResponseWriter,
 	//如何获得参数
 	//解析参数
 	err := request.ParseForm()
-	fmt.Println(err)
+	if err != nil {
+		fmt.Println(err)
+	}
 
 	mobile := request.PostForm.Get("mobile")
 	passwd := request.PostForm.Get("passwd")
 
-	fmt.Println(mobile, passwd)
-
-	loginok := false
-	if mobile == "18600000000" && passwd == "123456" {
-		loginok = true
-	}
-	if loginok {
-		//{"id":1,"token":"xx"}
-		data := make(map[string]interface{})
-		data["id"] = 1
-		data["token"] = "test"
-		util.RespOk(writer, data, "")
+	// 模拟
+	user, err := userService.Login(mobile, passwd)
+	if err != nil {
+		util.RespFail(writer, err.Error())
 	} else {
-		util.RespFail(writer, "密码不正确")
-
+		util.RespOk(writer, user, "")
 	}
+
+	//fmt.Println(mobile, passwd)
+	//
+	//loginok := false
+	//if mobile == "18600000000" && passwd == "123456" {
+	//	loginok = true
+	//}
+	//if loginok {
+	//	//{"id":1,"token":"xx"}
+	//	data := make(map[string]interface{})
+	//	data["id"] = 1
+	//	data["token"] = "test"
+	//	util.RespOk(writer, data, "")
+	//} else {
+	//	util.RespFail(writer, "密码不正确")
+	//
+	//}
 	//go get github.com/go-xorm/xorm
 	//go get github.com/go-sql-driver/mysql
 	//返回json ok
