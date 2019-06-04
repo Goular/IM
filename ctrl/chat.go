@@ -164,6 +164,8 @@ func recvproc(node *Node) {
 func dispatch(data []byte) {
 	//todo 解析data为message
 	msg := Message{}
+	// todo:打印发送过来的内容
+	fmt.Println(string(data))
 	err := json.Unmarshal(data, &msg)
 	if err != nil {
 		log.Println(err.Error())
@@ -177,6 +179,7 @@ func dispatch(data []byte) {
 		//todo 群聊转发逻辑
 		for _, v := range clientMap {
 			if v.GroupSets.Has(msg.Dstid) {
+				fmt.Println("<=send", msg)
 				v.DataQueue <- data
 			}
 		}

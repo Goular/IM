@@ -57,16 +57,18 @@ func RegisterView() {
 
 func main() {
 	//绑定请求和处理函数
-	http.HandleFunc("/user/login", ctrl.UserLogin)
-	http.HandleFunc("/user/register", ctrl.UserRegister)
-	http.HandleFunc("/contact/loadcommunity", ctrl.LoadCommunity)
+	http.HandleFunc("/chat", ctrl.Chat)                   // 用于登录聊天
+	http.HandleFunc("/user/login", ctrl.UserLogin)        // 用于用户登录操作
+	http.HandleFunc("/user/register", ctrl.UserRegister)  // 用于用户注册
+	http.HandleFunc("/contact/addfriend", ctrl.Addfriend) // 用于添加好友
+
+	http.HandleFunc("/contact/loadcommunity", ctrl.LoadCommunity) // 用于
 	http.HandleFunc("/contact/loadfriend", ctrl.LoadFriend)
 	http.HandleFunc("/contact/joincommunity", ctrl.JoinCommunity)
 	http.HandleFunc("/contact/createcommunity", ctrl.CreateCommunity)
 	//http.HandleFunc("/contact/addfriend", ctrl.Addfriend)
-	http.HandleFunc("/contact/addfriend", ctrl.Addfriend)
-	http.HandleFunc("/chat", ctrl.Chat)
-	http.HandleFunc("/attach/upload", ctrl.Upload)
+
+	http.HandleFunc("/attach/upload", ctrl.Upload) // 用于附件上传
 	//1 提供静态资源目录支持
 	//http.Handle("/", http.FileServer(http.Dir(".")))
 
